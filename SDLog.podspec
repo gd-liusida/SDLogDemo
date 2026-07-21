@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SDLog'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'A lightweight Swift logger that prints messages and writes them to a .log file.'
   s.description      = <<-DESC
 SDLog is a lightweight Swift logger for iOS. It supports debug, info, warning, and error logs,
