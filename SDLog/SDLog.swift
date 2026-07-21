@@ -5,6 +5,19 @@ public enum SDLogLevel: String {
     case info = "INFO"
     case warning = "WARNING"
     case error = "ERROR"
+
+    public var icon: String {
+        switch self {
+        case .debug:
+            return "🐛"
+        case .info:
+            return "ℹ️"
+        case .warning:
+            return "⚠️"
+        case .error:
+            return "❌"
+        }
+    }
 }
 
 public final class SDLog: @unchecked Sendable {
@@ -44,7 +57,7 @@ public final class SDLog: @unchecked Sendable {
     private func write(_ level: SDLogLevel, _ message: String, file: String = #file, function: String = #function, line: Int = #line) {
         let fileName = URL(fileURLWithPath: file).lastPathComponent
         let timestamp = SDLog.makeTimestamp()
-        let output = "[\(timestamp)] [\(level.rawValue)] \(fileName):\(line) \(function) - \(message)"
+        let output = "[\(timestamp)] \(level.icon) [\(level.rawValue)] \(fileName):\(line) \(function) - \(message)"
 
         print(output)
         appendToFile(output)
